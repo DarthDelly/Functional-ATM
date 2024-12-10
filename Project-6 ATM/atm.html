@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ATM Simulator</title>
+    <link rel="stylesheet" href="atm.css">
+</head>
+<body>
+  <div class="layout">
+    <div>
+    <h1>ATM Simulator</h1>
+    <div id="atm-output"></div>
+    <button onclick="atm()">Start ATM</button>
+    </div>
+  </div>
+
+    <script>
+        function atm() {
+            let balance = 1000; // Initial balance
+            let atmRunning = true;
+
+            while (atmRunning) {
+                let choice = prompt(
+                    "Welcome to the ATM! Choose an option:\n" +
+                    "1. Check Balance\n" +
+                    "2. Deposit Money\n" +
+                    "3. Withdraw Money\n" +
+                    "4. Exit"
+                );
+
+                switch (choice) {
+                    case "1":
+                        alert(`Your current balance is: $${balance}`);
+                        break;
+                    case "2": 
+                       let depositAmount = parseFloat(prompt("Enter the amount to deposit:")); 
+                        if (depositAmount > 0) {
+                            balance += depositAmount;
+                            alert(`$${depositAmount} deposited. New balance: $${balance}`);
+                        } else {
+                            alert("Invalid amount. Please try again.");
+                        }
+                        break;
+                    case "3":
+                        let withdrawAmount = parseFloat(prompt("Enter the amount to withdraw:"));
+                        if (withdrawAmount > 0 && withdrawAmount <= balance) {
+                            balance -= withdrawAmount;
+                            alert(`$${withdrawAmount} withdrawn. New balance: $${balance}`);
+                        } else if (withdrawAmount > balance) {
+                            alert("Insufficient balance.");
+                        } else {
+                            alert("Invalid amount. Please try again.");
+                        }
+                        break;
+                    case "4": 
+                        atmRunning = false;
+                        alert("Thank you for using the ATM. Goodbye!");
+                        break;
+                    default:
+                        alert("Invalid option. Please try again.");
+                }
+            }
+        }
+    </script>
+</body>
+</html>

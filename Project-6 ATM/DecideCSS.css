@@ -1,0 +1,59 @@
+body {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    position: relative;
+    background-image: url(images/backgroundDECIDE.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+h2 {
+    margin-top: 100px;
+    margin-left: 36%;
+    position: absolute;
+}
+.blox1 div {
+    left: 20%;
+    top: 200px;
+}
+.box1 {
+    border: solid;
+    background-color: green;
+    color: white;
+    padding: 80px;
+    display: block;
+    text-align: center;
+    position: absolute;
+    border-radius: 15px;
+    transform: scale(1.1, 1.1);
+    transition: transform 0.3s;
+}
+.box1:hover {
+    transform: scale(1.02, 1.02);
+}
+
+.blox2 div {
+    left: 50%;
+    top: 200px;
+}
+.box2 {
+    border: solid;
+    background-color: green;
+    color: white;
+    padding: 80px;
+    display: block;
+    text-align: center;
+    position: absolute;
+    border-radius: 15px;
+    transform: scale(1.1, 1.1);
+    transition: transform 0.3s;
+}
+.box2:hover {
+    transform: scale(1.02, 1.02);
+}
+
+/*---Button---*/
+button {
+    outline: none;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}

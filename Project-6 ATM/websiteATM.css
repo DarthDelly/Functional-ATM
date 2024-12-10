@@ -1,0 +1,25 @@
+body {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    height: 100vh;
+    margin: 0;
+    position: relative;
+}
+.mainLayout {
+    background-color: whitesmoke;
+    border: solid 1px;
+    color: black;
+    width: 60%;
+    height: 60%;
+    position: absolute;
+    border-radius: 10px;
+    top: 100px;
+    left: 100px;
+    display: block;
+}
+div.layout div {
+    background-color: yellowgreen;
+    width: 10%;
+    height: 10%;
+    position: absolute;
+    border-radius: 10px;
+}

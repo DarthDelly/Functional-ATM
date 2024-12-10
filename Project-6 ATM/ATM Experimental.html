@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>ATM by Delly</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="atmExperimental.css">
+</head>
+<body>
+<div class="welcome">
+  <div class="non">
+    <h1>Welcome to ATM</h1>
+  </div>
+
+  <div class="table1">
+    <table style="color: black;">
+      <tr>
+        <td><button id="balance" onclick="openBalance()"><b>Check Balance</b></button></td>
+        <td id="bal"><b></b></td>
+      </tr>
+      <tr>
+        <td><button id="deposit" onclick="openDeposit()"><b>Deposit Money</b></button></td>
+        <td class="kept"><b></b></td>
+      </tr>
+      <tr>
+        <td><button id="withdraw" onclick="openWithdraw()"><b>Withdraw Money</b></button></td>
+        <td id="money"><b></b></td>
+      </tr>
+    </table>
+  </div>
+</div>
+
+<button onclick="openCard()"><img class="card" src="images/insertCard.png" alt="insertCard"></button>
+
+<div id="openPop" class="popup1">                             
+  <div>
+    <h2 style="color: black;">Enter Amount to Deposit</h2>
+    <input type="number" id="receivedAmnt" placeholder="Amount to deposit">
+    <p class="received"></p>
+  </div>
+  <button class="submit1" onclick="submitted()"><h2>SUBMIT</h2></button>
+</div>
+
+<div id="openPop1" class="popup2">
+  <div>
+    <h2 style="color: black;">Enter Amount to Withdraw</h2>
+    <input type="number" id="receivedAmnt1" placeholder="Amount to withdraw">
+    <p class="received1"></p>
+  </div>
+  <button class="submit2" onclick="submitted1()"><h2>SUBMIT</h2></button>
+</div>
+
+<div class="blank1" id="blank"></div>
+
+<script>
+  let remainder = 1000; 
+
+  function openCard() { 
+    document.getElementById("blank").style.display = "none";
+  }
+
+  function openBalance() {                                           /*-----BALANCE----*/
+    document.getElementById("bal").innerHTML = `P ${remainder}`;
+  }
+
+  function openDeposit() {                                           /*-----DEPOSIT----*/
+    document.getElementById("openPop").style.display = "block";
+    document.querySelector(".received").innerHTML = "";
+  }
+
+  function submitted() { 
+    let received = parseFloat(document.getElementById('receivedAmnt').value);
+    if (!isNaN(received) && received > 0) {
+      remainder += received;
+      document.querySelector(".received").innerHTML = `Deposited: P ${received}`;
+      document.getElementById("openPop").style.display = "none"; 
+      document.querySelector(".kept").innerHTML = `New Balance: P ${remainder}`; 
+    } else {
+      alert("Please enter a valid amount.");
+    }
+  }
+
+  function openWithdraw() {                                           /*-----WITHDRAW----*/
+    document.getElementById("openPop1").style.display = "block";
+    document.querySelector(".received1").innerHTML = "";
+  }
+
+  function submitted1() { 
+    let withdrawAmount = parseFloat(document.getElementById('receivedAmnt1').value);
+
+    if (!isNaN(withdrawAmount) && withdrawAmount > 0 && withdrawAmount <= remainder) {
+      remainder -= withdrawAmount; 
+      document.querySelector(".received1").innerHTML = `Withdrew: P ${withdrawAmount}`;
+      document.getElementById("openPop1").style.display = "none";
+      document.querySelector(".kept").innerHTML = `New Balance: P ${remainder}`;
+      document.getElementById("money").innerHTML = `Last Withdraw: P ${withdrawAmount}`;
+    } else {
+      alert("Invalid amount or insufficient funds.");
+    }
+  }
+</script>
+</body>
+</html>
